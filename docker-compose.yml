@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  gapic-showcase:
+    image: gcr.io/gapic-images/gapic-showcase:latest
+    ports:
+      - 7469:7469
+  envoy:
+    image: envoyproxy/envoy:v1.21-latest
+    ports:
+      - 9901:9901
+      - 51051:51051
+    volumes:
+      - ./envoy.yml:/etc/envoy/envoy.yaml
+      - ./pb:/etc/envoy/pb
